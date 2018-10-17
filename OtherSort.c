@@ -12,9 +12,9 @@ int* sort(int*t, size_t length){
 	}
 
 	if(length >= 3){
-      bool not_multiple = ((length%3)!=0);
-		size_t length_1 = (length/3) + not_multiple;
-		size_t length_2 = (2*length/3) + not_multiple - length_1;
+      bool notMultiple = ((length%3)!=0);
+		size_t length_1 = (length/3) + notMultiple;
+		size_t length_2 = (2*length/3) + notMultiple - length_1;
 
 	   int* t_2 = t+(length_1);
 
