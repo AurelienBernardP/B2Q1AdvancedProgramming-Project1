@@ -1,9 +1,11 @@
 #include<stdlib.h>
 #include<stdbool.h>
 
-int* sort(int*t, size_t length){
+#include"Sort.h"
+
+void sort(int*t, size_t length){
 	if(length <= 1)
-		return t;
+		return;
 
 	if(*t > *(t+length-1)){
 		int tmp = *t;
@@ -16,12 +18,8 @@ int* sort(int*t, size_t length){
 		size_t length_1 = (length/3) + notMultiple;
 		size_t length_2 = (2*length/3) + notMultiple - length_1;
 
-	   int* t_2 = t+(length_1);
-
-		t = sort(t, length_1 + length_2);
-		t_2 = sort(t_2, length - length_1);
-      t = sort(t, length_1 + length_2);
+		sort(t, length_1 + length_2);
+		sort(t+(length_1), length - length_1);
+      sort(t, length_1 + length_2);
 	}
-
-	return t;
 }
