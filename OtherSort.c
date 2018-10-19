@@ -15,10 +15,11 @@ void sort(int*t, size_t length){
 
 	if(length >= 3){
       bool notMultiple = ((length%3)!= 0);
+     	size_t length_1 = (length/3) + notMultiple;
 		size_t length_2 = (2*length/3) + notMultiple;
 
 		sort(t, length_2);
-		sort(t+(length_2/2), length - (length_2/2));
+		sort(t+(length_1), length - length_1);
       sort(t, length_2);
 	}
 }
