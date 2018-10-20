@@ -33,10 +33,10 @@ static void merge(int* array, int* tmpArray, size_t start, size_t middle, size_t
         k++;
     }
 
-    for(; i<= middle ; k++, i++){//cpy what is left from one of the portions into tmpArray
+    for(; i <= middle ; k++, i++){//cpy what is left from one of the portions into tmpArray
         tmpArray[k] = array[i];
     }
-    for(; j<= end ; k++, j++){
+    for(; j <= end ; k++, j++){
         tmpArray[k] = array[j];
     }
 
@@ -73,11 +73,11 @@ void sort(int* array, size_t length){
     if (!array)
         return;
 
-    int* tmpArray =(int*)malloc(length*sizeof(int));
+    int* tmpArray =(int*)malloc(length * sizeof(int));
     if(!tmpArray)
         return;
         
-    mergeSort(array, tmpArray, 0 ,--length);
+    mergeSort(array, tmpArray, 0, --length);
     free(tmpArray);
 return;
 }
