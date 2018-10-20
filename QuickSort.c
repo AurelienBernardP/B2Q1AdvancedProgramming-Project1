@@ -24,7 +24,7 @@ static size_t partition(int* array, size_t start, size_t end){
     array[i+1] = tmp;
 
 return(i+1);
-}
+} 
 
 /* -------------------------------------------------------------------- *
  * Swaps the pivot value (array[end]) with the median value from: array[start], array[end] and array[(start+end)/2]
