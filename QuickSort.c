@@ -1,12 +1,13 @@
 /* ========================================================================= *
- * QuickSort
- * Implementation of the QuickSort algorithm.
+ * quickSort
+ * Implementation of the quickSort algorithm.
  * ========================================================================= */
 
 #include <stddef.h>
 #include "Sort.h"
 
-static size_t Partition(int* array, size_t start, size_t end){
+static size_t partition(int* array, size_t start, size_t end){
+    
     int pivot = array[end];
     int i = start-1;
 
@@ -22,39 +23,61 @@ static size_t Partition(int* array, size_t start, size_t end){
     array[end] = array[i+1];
     array[i+1] = tmp;
 
-    return(i+1);
+return(i+1);
 }
 
+/* -------------------------------------------------------------------- *
+ * Swaps the pivot value (array[end]) with the median value from: array[start], array[end] and array[(start+end)/2]
+ * and calls the fonction partition at the end.
+ *
+ * ARGUMENTS
+ * array: pointer to first element of an array
+ * start: index of the lower boundary where the sorting takes effect in the array
+ * end: index of the top boundary where the sorting takes effect in the array
+ *
+ * RETURN
+ * Partiton function returned value.
+ * --------------------------------------------------------------------*/
 static size_t MedianOf3Partitions(int* array, size_t start, size_t end){
-    size_t middle = ((start+end)/2);
-    size_t median_value_index;
-    if((array[start]>=array[middle] && array[start]<= array[end]) || (array[start]<=array[middle] && array[start]>= array[end])){
+    size_t middle = ((start + end) / 2);
+    size_t medianValueIndex;
+    if((array[start] >= array[middle] && array[start] <= array[end]) || (array[start] <= array[middle] && array[start] >= array[end])){
         // array[start]is the median value
-        median_value_index = start;
+        medianValueIndex = start;
     }
-    if((array[middle]>=array[start] && array[middle]<= array[end]) || (array[middle]<=array[start] && array[middle]>= array[end])){
+    if((array[middle] >= array[start] && array[middle] <= array[end]) || (array[middle]<=array[start] && array[middle] >= array[end])){
         // array[middle]is the median value
-        median_value_index = middle;
+        medianValueIndex = middle;
     }
-    if((array[end]>=array[start] && array[end]<= array[middle]) || (array[end]<=array[start] && array[end]>= array[middle])){
+    if((array[end] >= array[start] && array[end] <= array[middle]) || (array[end] <= array[start] && array[end] >= array[middle])){
         // array[end]is the median value
-        median_value_index = end;
+        medianValueIndex = end;
     }
     int tmp = array[end];
-    array[end] = array[median_value_index];
-    array[median_value_index] = tmp;
+    array[end] = array[medianValueIndex];
+    array[medianValueIndex] = tmp;
 
-    return Partition(array, start, end);
+return partition(array, start, end);
 }
 
-
-static void QuickSort(int* array, size_t start, size_t end){
-    if(start>=end){
+/* -------------------------------------------------------------------- *
+ * Sorting algorithm, ascending order
+ *
+ * ARGUMENTS
+ * array: pointer to first element of an array
+ * start: index of the lower boundary where the sorting takes effect in the array
+ * end: index of the top boundary where the sorting takes effect in the array
+ *
+ * RETURN
+ * array sorted from array[start] to array[end]
+ * --------------------------------------------------------------------*/
+static void quickSort(int* array, size_t start, size_t end){
+    if(start >= end){
         return;
     }
     size_t pivot = MedianOf3Partitions(array, start, end);
-    QuickSort(array, start, pivot-1);
-    QuickSort(array, pivot+1, end);
+    quickSort(array, start, pivot-1);
+    quickSort(array, pivot+1, end);
  
 return;
 }
@@ -64,6 +87,6 @@ void sort(int* array, size_t length){
     if (!array)
         return;
 
-    QuickSort(array, 0, --length);
+    quickSort(array, 0, --length);
 return;
 }
