@@ -22,7 +22,7 @@
 static void merge(int* array, int* tmpArray, size_t start, size_t middle, size_t end ){
 
     size_t i = start, j = middle, k = 0;
-    while(i <= middle && j<= end){
+    while(i <= middle && j <= end){
         if(array[i] <= array[j] && (i < middle)){
             tmpArray[k] = array[i];
             i++;
@@ -59,6 +59,7 @@ return;
  * array sorted from array[start] to array[end]
  * --------------------------------------------------------------------*/
 static void mergeSort(int* array,int* tmpArray, size_t start, size_t end){
+    
     if(start < end){
         size_t middle = (start + end) / 2;
         mergeSort(array, tmpArray, start, middle);
@@ -73,7 +74,7 @@ void sort(int* array, size_t length){
     if (!array)
         return;
 
-    int* tmpArray =(int*)malloc(length * sizeof(int));
+    int* tmpArray =(int*)malloc((length+1) * sizeof(int));
     if(!tmpArray)
         return;
         
