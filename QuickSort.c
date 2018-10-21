@@ -9,7 +9,7 @@
 static size_t partition(int* array, size_t start, size_t end){
     
     int pivot = array[end];
-    int i = start-1;
+    int i = (start-1);
 
     for(size_t j = start; j < end; j++){
         if(array[j] <= pivot){
@@ -22,8 +22,8 @@ static size_t partition(int* array, size_t start, size_t end){
     int tmp = array[end];
     array[end] = array[i+1];
     array[i+1] = tmp;
-
-return(i+1);
+    ++i;
+return i;
 } 
 
 /* -------------------------------------------------------------------- *
@@ -38,7 +38,7 @@ return(i+1);
  * RETURN
  * Partiton function returned value.
  * --------------------------------------------------------------------*/
-static size_t MedianOf3Partitions(int* array, size_t start, size_t end){
+static size_t MedianOf3Partitions(int* array, long int start, long int end){
     size_t middle = ((start + end) / 2);
     size_t medianValueIndex;
     if((array[start] >= array[middle] && array[start] <= array[end]) || (array[start] <= array[middle] && array[start] >= array[end])){
@@ -71,14 +71,14 @@ return partition(array, start, end);
  * RETURN
  * array sorted from array[start] to array[end]
  * --------------------------------------------------------------------*/
-static void quickSort(int* array, size_t start, size_t end){
-    if(start >= end){
-        return;
-    }
+static void quickSort(int* array, long int start, long int end){
+    
+    if(start < end){
     size_t pivot = MedianOf3Partitions(array, start, end);
-    quickSort(array, start, pivot-1);
-    quickSort(array, pivot+1, end);
- 
+    quickSort(array, start, pivot - 1);
+    quickSort(array, pivot + 1, end);
+    }
+    
 return;
 }
 
@@ -87,6 +87,6 @@ void sort(int* array, size_t length){
     if (!array)
         return;
 
-    quickSort(array, 0, --length);
+    quickSort(array, 0, (--length));
 return;
 }
