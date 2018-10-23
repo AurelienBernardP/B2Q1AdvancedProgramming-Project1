@@ -7,7 +7,7 @@
 #include "Sort.h"
 
 /* -------------------------------------------------------------------- *
- * Merges two sorted in ascending order portions of an array in to one sorted portion in ascending order.
+ * Merges two sorted in ascending subarrays of an array in to one sorted subarray in ascending order.
  *
  * ARGUMENTS
  * array: pointer to first element of an array
