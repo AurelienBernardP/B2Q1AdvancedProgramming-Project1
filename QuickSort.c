@@ -6,6 +6,18 @@
 #include <stddef.h>
 #include "Sort.h"
 
+/* -------------------------------------------------------------------- *
+ * Swaps the elements of the array and places the elements smaller than the pivot element on its left
+ * and the larger or equal ones on its right.
+ *
+ * ARGUMENTS
+ * array: pointer to first element of an array
+ * start: index of the lower boundary where the permutation takes effect in the subarray.
+ * end: index of the top boundary where the permutation takes effect in the subarray.
+ *
+ * RETURN
+ * Index of the pivot in the permutated array.
+ * --------------------------------------------------------------------*/
 static size_t partition(int* array, size_t start, size_t end){
     
     int pivot = array[end];
